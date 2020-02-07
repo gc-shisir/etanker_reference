@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">etanker</string>
+    <string-array name="categories">
+        <item>Choose a category...</item>
+        <item>Customer</item>
+        <item>Supplier</item>
+    </string-array>
 </resources>
