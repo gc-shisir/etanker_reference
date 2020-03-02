@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "520979045137-atifktfdfuj171h5e5e83t1h57gphpnm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.etanker",
+            "certificate_hash": "554a84a3ec5e943131c0b51d050c0aa5a1d84a66"
+          }
+        },
+        {
           "client_id": "520979045137-s89o2t4ipnn0kpsnaq5jgoifnvuqa708.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
