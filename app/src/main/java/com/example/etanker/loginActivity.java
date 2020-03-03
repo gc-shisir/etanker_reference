@@ -1,11 +1,13 @@
 package com.example.etanker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -55,7 +60,7 @@ public class loginActivity extends AppCompatActivity {
                 if(TextUtils.isEmpty(email) || TextUtils.isEmpty(password)){
                     Toast.makeText(loginActivity.this, "Please enter email and passsword...", Toast.LENGTH_SHORT).show();
                 }else{
-                    progressDialog.setMessage("Processing...");
+                    progressDialog.setMessage("Logging in...");
                     progressDialog.show();
                     login(email,password);
                 }
@@ -65,15 +70,23 @@ public class loginActivity extends AppCompatActivity {
     }
 
     private void login(String email, String password) {
-        fAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
-            public void onSuccess(AuthResult authResult) {
-                Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(loginActivity.this,supplierDashboard.class));
-                progressDialog.dismiss();
-                finish();
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(loginActivity.this,supplierDashboard.class);
+                    startActivity(intent);
+                    progressDialog.dismiss();
+                    finish();
+                }
+                else{
+                    Toast.makeText(loginActivity.this, "Login Failed...", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
             }
         });
+
     }
 
 
