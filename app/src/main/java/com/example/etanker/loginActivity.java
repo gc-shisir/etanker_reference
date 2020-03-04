@@ -1,7 +1,10 @@
 package com.example.etanker;
 
 import androidx.annotation.NonNull;
+<<<<<<< HEAD
 import androidx.annotation.Nullable;
+=======
+>>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -79,12 +82,17 @@ public class loginActivity extends AppCompatActivity {
                 String password = loginPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     Toast.makeText(loginActivity.this, "Please enter email and passsword...", Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
                 }
                 else if(msupplier.isChecked() && mcustomer.isChecked()) {
                     Toast.makeText(loginActivity.this, "select only one", Toast.LENGTH_SHORT).show();
                 }
                 else if(mcustomer.isChecked()){
                     progressDialog.setMessage("Processing...");
+=======
+                }else{
+                    progressDialog.setMessage("Logging in...");
+>>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
                     progressDialog.show();
                     login(email, password);
 
@@ -102,6 +110,7 @@ public class loginActivity extends AppCompatActivity {
 
         });
 
+<<<<<<< HEAD
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,8 +143,26 @@ public class loginActivity extends AppCompatActivity {
                     }
                 });
                 passwordResetDialog.show();
+=======
+    private void login(String email, String password) {
+        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(loginActivity.this,supplierDashboard.class);
+                    startActivity(intent);
+                    progressDialog.dismiss();
+                    finish();
+                }
+                else{
+                    Toast.makeText(loginActivity.this, "Login Failed...", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                }
+>>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
             }
         });
+
     }
 
         private void login(final String email, final String password){
