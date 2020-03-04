@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".supplierDashboard"></activity>
-        <activity android:name=".customerDashboard"/>
+        <activity android:name=".customerDashboard"></activity>
         <activity
             android:name=".registerActivity"
             android:configChanges="orientation"
