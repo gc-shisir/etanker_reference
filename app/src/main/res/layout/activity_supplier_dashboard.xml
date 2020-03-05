@@ -68,4 +68,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.cardview.widget.
+        android:id="@+id/card1"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <androidx.cardview.widget.
+        android:id="@+id/card2"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintStart_toEndOf="@id/card1"
+        app:layout_constraintTop_toBottomOf="@id/view" />
+
+    <androidx.cardview.widget.
+        android:id="@+id/card3"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card1" />
+
+    <androidx.cardview.widget.
+        android:id="@+id/card4"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@id/card3"
+        app:layout_constraintTop_toBottomOf="@id/card2" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
