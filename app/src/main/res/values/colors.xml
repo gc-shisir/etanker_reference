@@ -3,4 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="startGradient">#000046</color>
+    <color name="endGradient">#1CB5E0</color>
+    <color name="inputText">#000000</color>
+    <color name="register_login_text">#fff</color>
+    <color name="registerLoginColor">#2475B0</color>
 </resources>

@@ -6,64 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".supplierDashboard">
 
-<<<<<<< HEAD
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="130dp"
-        android:layout_height="119dp"
-        android:text="Hello "
-        tools:layout_editor_absoluteX="108dp"
-        tools:layout_editor_absoluteY="165dp" />
-=======
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view"
         app:srcCompat="@android:drawable/sym_def_app_icon" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:text="Name"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/phoneNumber"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Phone Number"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <Button
         android:id="@+id/btnAddTanker"
-        android:layout_width="107dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="119dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         android:text="Add Tankers"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
 
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="119dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="8dp"
+        android:text="Log Out"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btnAddTanker" />
+
     <View
         android:id="@+id/view"
         android:layout_width="408dp"
         android:layout_height="97dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
->>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
+
 </androidx.constraintlayout.widget.ConstraintLayout>

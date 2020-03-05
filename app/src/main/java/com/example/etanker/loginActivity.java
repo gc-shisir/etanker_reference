@@ -1,10 +1,8 @@
 package com.example.etanker;
 
 import androidx.annotation.NonNull;
-<<<<<<< HEAD
+
 import androidx.annotation.Nullable;
-=======
->>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
@@ -39,7 +37,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import io.opencensus.tags.Tag;
 
 public class loginActivity extends AppCompatActivity {
-    TextView userRegister,forgotPassword;
+    TextView userRegister, forgotPassword;
     EditText loginEmail;
     EditText loginPassword;
     CheckBox mcustomer, msupplier;
@@ -48,7 +46,7 @@ public class loginActivity extends AppCompatActivity {
     FirebaseFirestore fstore;
     String UserID;
     private ProgressDialog progressDialog;
-    String TAG="My Activity";
+    String TAG = "My Activity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +57,19 @@ public class loginActivity extends AppCompatActivity {
         loginEmail = (EditText) findViewById(R.id.login_email);
         loginPassword = (EditText) findViewById(R.id.login_password);
         btnLogin = (Button) findViewById(R.id.login_button);
-        forgotPassword=findViewById(R.id.forgot_Password);
+        forgotPassword = findViewById(R.id.forgot_Password);
 
         mcustomer = findViewById(R.id.customer_Check);
         msupplier = findViewById(R.id.supplier_Check);
 
-        fstore=FirebaseFirestore.getInstance();
+        fstore = FirebaseFirestore.getInstance();
         fAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
         userRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),register_customer.class));
+                startActivity(new Intent(getApplicationContext(), register_customer.class));
             }
         });
 
@@ -82,35 +80,28 @@ public class loginActivity extends AppCompatActivity {
                 String password = loginPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
                     Toast.makeText(loginActivity.this, "Please enter email and passsword...", Toast.LENGTH_SHORT).show();
-<<<<<<< HEAD
                 }
-                else if(msupplier.isChecked() && mcustomer.isChecked()) {
+                else if (msupplier.isChecked() && mcustomer.isChecked()) {
                     Toast.makeText(loginActivity.this, "select only one", Toast.LENGTH_SHORT).show();
                 }
-                else if(mcustomer.isChecked()){
-                    progressDialog.setMessage("Processing...");
-=======
-                }else{
-                    progressDialog.setMessage("Logging in...");
->>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
-                    progressDialog.show();
-                    login(email, password);
-
-                }
-                else if(msupplier.isChecked()) {
+                else if (mcustomer.isChecked()) {
                     progressDialog.setMessage("Processing...");
                     progressDialog.show();
-                    login1(email,password);
+                    login(email,password);
 
                 }
-                else{
+                else if (msupplier.isChecked()) {
+                    progressDialog.setMessage("Processing...");
+                    progressDialog.show();
+                    login1(email, password);
+
+                } else {
                     Toast.makeText(loginActivity.this, "select one boxes", Toast.LENGTH_SHORT).show();
                 }
             }
 
         });
 
-<<<<<<< HEAD
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -143,55 +134,36 @@ public class loginActivity extends AppCompatActivity {
                     }
                 });
                 passwordResetDialog.show();
-=======
-    private void login(String email, String password) {
-        fAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
-                    Intent intent=new Intent(loginActivity.this,supplierDashboard.class);
-                    startActivity(intent);
-                    progressDialog.dismiss();
-                    finish();
-                }
-                else{
-                    Toast.makeText(loginActivity.this, "Login Failed...", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
-                }
->>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
             }
         });
-
     }
 
-        private void login(final String email, final String password){
-            fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-                        UserID = fAuth.getCurrentUser().getUid();
-                        final DocumentReference documentReference = fstore.collection("customers").document(UserID);
-                        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                            @Override
-                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                try {
-                                    if ((documentSnapshot.getString("email").equals(email))) {
-                                        Log.d(TAG, "checkpoint");
-
-                                        Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
-                                        progressDialog.dismiss();
-                                        startActivity(new Intent(loginActivity.this, customerDashboard.class));
-                                        finish();
-                                    }
-
-                                } catch (NullPointerException e1) {
-                                    Log.d(TAG, "success");
+    private void login(final String email, final String password) {
+        fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    UserID = fAuth.getCurrentUser().getUid();
+                    final DocumentReference documentReference = fstore.collection("customers").document(UserID);
+                    documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                        @Override
+                        public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                            try {
+                                if ((documentSnapshot.getString("email").equals(email))) {
+                                    Log.d(TAG, "checkpoint");
+                                    Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
                                     progressDialog.dismiss();
-                                    Toast.makeText(loginActivity.this,"wrong check box",Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(loginActivity.this, customerDashboard.class));
+                                    finish();
                                 }
+
+                            } catch (NullPointerException e1) {
+                                Log.d(TAG, "success");
+                                progressDialog.dismiss();
+                                Toast.makeText(loginActivity.this, "wrong check box", Toast.LENGTH_SHORT).show();
                             }
-                        });
+                        }
+                    });
 
 //                        fstore.collection("customers").document(UserID).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 //                            @Override
@@ -217,44 +189,46 @@ public class loginActivity extends AppCompatActivity {
 //                            Toast.makeText(loginActivity.this, "error! you checked the wrong box", Toast.LENGTH_SHORT).show();
 //                            progressDialog.dismiss();
 //                        }
-                    }
-                    else{
-                        Toast.makeText(loginActivity.this, "error", Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
+                } else {
+                    Toast.makeText(loginActivity.this, "error", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
 
-                    }
                 }
-            });
-        }
+            }
+        });
+    }
         private void login1(final String email, final String password){
             fAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
-
-                        if (task.isSuccessful()) {
-                            UserID = fAuth.getCurrentUser().getUid();
-                            final DocumentReference documentReference = fstore.collection("suppliers").document(UserID);
-                            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                                @Override
-                                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                                    try {
-                                        if ((documentSnapshot.getString("email").equals(email))) {
-                                            Log.d(TAG, "checkpoint");
-
-                                            Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
-                                            progressDialog.dismiss();
-                                            startActivity(new Intent(getApplicationContext(), supplierDashboard.class));
-                                            finish();
-                                        }
-                                    }
-                                    catch (NullPointerException e1){
-                                        Log.d(TAG, "success");
+                    if (task.isSuccessful()) {
+                        UserID = fAuth.getCurrentUser().getUid();
+                        final DocumentReference documentReference = fstore.collection("suppliers").document(UserID);
+                        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                                try {
+                                    if ((documentSnapshot.getString("email").equals(email))) {
+                                        Log.d(TAG, "checkpoint");
+                                        Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
                                         progressDialog.dismiss();
-                                        Toast.makeText(loginActivity.this,"wrong check box",Toast.LENGTH_SHORT).show();
+
+                                        Intent intent=new Intent(loginActivity.this,supplierDashboard.class);
+                                        intent.putExtra("userId",UserID);
+                                        startActivity(intent);
+                                        finish();
+
+//                                        startActivity(new Intent(getApplicationContext(),supplierDashboard.class));
+                                        // finish();
                                     }
+                                } catch (NullPointerException e1) {
+                                    Log.d(TAG, "success");
+                                    progressDialog.dismiss();
+                                    Toast.makeText(loginActivity.this, "wrong check box", Toast.LENGTH_SHORT).show();
                                 }
-                            });
-                        }
+                            }
+                        });
+                    }
                         else {
                             Toast.makeText(loginActivity.this, "password and email does not match", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();

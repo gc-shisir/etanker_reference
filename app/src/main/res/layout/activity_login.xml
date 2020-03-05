@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login1background"
+    android:background="@drawable/layout_bg"
     tools:context=".loginActivity">
 
     <EditText
         android:id="@+id/login_email"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/input_fields"
         android:ems="10"
         android:hint="Email/Phone"
+        android:padding="10dp"
         android:inputType="textEmailAddress"
+        android:textAlignment="center"
+        android:textColor="@color/inputText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,11 +28,17 @@
 
     <EditText
         android:id="@+id/login_password"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/input_fields"
         android:ems="10"
         android:hint="Password"
+        android:padding="10dp"
         android:inputType="textPassword"
+        android:textAlignment="center"
+        android:textColor="@color/inputText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,22 +47,27 @@
 
     <Button
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:padding="10dp"
         android:text="Login"
+        android:background="@drawable/register_login_button"
+        android:textColor="@color/inputText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.222" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Donot have account?"
+        android:text="Do not have account?"
+        android:textColor="@color/startGradient"
         app:layout_constraintBaseline_toBaselineOf="@+id/registerUser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.317"
@@ -60,7 +77,9 @@
         android:id="@+id/registerUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#f4eeff"
         android:text="Register Here..."
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.089"
@@ -72,12 +91,12 @@
         android:id="@+id/supplier_Check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="56dp"
         android:text="Supplier"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.433" />
 
     <CheckBox
         android:id="@+id/customer_Check"
@@ -86,9 +105,10 @@
         android:text="Customer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toEndOf="@+id/supplier_Check"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.399" />
+        app:layout_constraintVertical_bias="0.433" />
 
     <TextView
         android:id="@+id/forgot_Password"
@@ -96,6 +116,7 @@
         android:layout_height="39dp"
         android:layout_marginTop="24dp"
         android:text="Forgot password?"
+        android:textColor="@color/startGradient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />

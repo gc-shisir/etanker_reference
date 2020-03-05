@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".supplierDashboard"></activity>
+
+        <activity android:name=".supplierDashboard"
+                    android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
         <activity android:name=".customerDashboard"></activity>
-=======
-        <activity android:name=".tankerRegistration"></activity>
-        <activity android:name=".supplierDashboard" />
->>>>>>> d1e997e9c331ca97b4bf4cf74c9cf46601865c43
+        <activity android:name=".tankerRegistration"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"></activity>
+
         <activity
             android:name=".registerActivity"
             android:configChanges="orientation"
@@ -27,7 +29,8 @@
         <activity
             android:name=".register_customer"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation"
