@@ -212,7 +212,6 @@ public class loginActivity extends AppCompatActivity {
                                         Log.d(TAG, "checkpoint");
                                         Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
                                         progressDialog.dismiss();
-
                                         Intent intent=new Intent(loginActivity.this,supplierDashboard.class);
                                         intent.putExtra("userId",UserID);
                                         startActivity(intent);

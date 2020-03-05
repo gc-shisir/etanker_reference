@@ -33,8 +33,7 @@ public class supplierDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_dashboard);
 
-        logout=findViewById(R.id.logout);
-        btnAddTanker=(Button)findViewById(R.id.btnAddTanker);
+
         fAuth=FirebaseAuth.getInstance();
 
         name=(TextView) findViewById(R.id.name);
