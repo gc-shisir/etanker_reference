@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +22,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class supplierDashboard extends AppCompatActivity {
 
-    Button btnAddTanker;
-    Button logout;
+    LinearLayout addTanker;
+    LinearLayout logout;
     FirebaseAuth fAuth;
     String TAG ="My activity";
     TextView name;
@@ -33,7 +34,12 @@ public class supplierDashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supplier_dashboard);
 
+<<<<<<< HEAD
 
+=======
+        logout=(LinearLayout) findViewById(R.id.logout);
+        addTanker=(LinearLayout)findViewById(R.id.addTanker);
+>>>>>>> 546507899cf787bbb85e30a5d55b7376fe9b0170
         fAuth=FirebaseAuth.getInstance();
 
         name=(TextView) findViewById(R.id.name);
@@ -50,7 +56,7 @@ public class supplierDashboard extends AppCompatActivity {
         });
 
 
-        btnAddTanker.setOnClickListener(new View.OnClickListener() {
+        addTanker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent tankerIntent=new Intent(supplierDashboard.this,tankerRegistration.class);
