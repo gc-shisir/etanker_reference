@@ -18,27 +18,31 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="@drawable/user_header">
 
             <ImageView
                 android:id="@+id/userImage"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginRight="10dp"
-                android:src="@drawable/layout_bg" />
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/man" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_margin="25dp">
 
                 <TextView
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name"
+                    android:text="Ramesh"
+                    android:textColor="@color/inputText"
                     android:textSize="25sp" />
 
                 <TextView
@@ -46,15 +50,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Phone Number"
+                    android:text="987654321"
+                    android:textColor="@color/inputText"
                     android:textSize="25dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="No of Tankers"
-                    android:textSize="25dp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:text="No of Tankers"-->
+<!--                    android:textSize="25dp" />-->
 
             </LinearLayout>
 
@@ -84,9 +89,10 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/layout_bg" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/add" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -114,9 +120,10 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/layout_bg" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/order" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -145,9 +152,10 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/layout_bg" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/logout" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -175,14 +183,15 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="130dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/layout_bg" />
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="20dp"
+                        android:src="@drawable/history" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="hello"
+                        android:text="Records"
                         android:textColor="@color/inputText"
                         android:textSize="20dp"
                         android:textAlignment="center" />
