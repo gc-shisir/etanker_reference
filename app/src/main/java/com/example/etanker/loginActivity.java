@@ -156,8 +156,8 @@ public class loginActivity extends AppCompatActivity {
                                     startActivity(new Intent(loginActivity.this, customerDashboard.class));
                                     finish();
                                 }
-
-                            } catch (NullPointerException e1) {
+                            }
+                            catch (NullPointerException e1) {
                                 Log.d(TAG, "success");
                                 progressDialog.dismiss();
                                 Toast.makeText(loginActivity.this, "wrong check box", Toast.LENGTH_SHORT).show();
@@ -212,16 +212,17 @@ public class loginActivity extends AppCompatActivity {
                                         Log.d(TAG, "checkpoint");
                                         Toast.makeText(loginActivity.this, "Successfully logged in...", Toast.LENGTH_SHORT).show();
                                         progressDialog.dismiss();
-                                        Intent intent=new Intent(loginActivity.this,supplierDashboard.class);
-                                        intent.putExtra("userId",UserID);
+                                        Intent intent = new Intent(loginActivity.this, supplierDashboard.class);
+                                        intent.putExtra("userId", UserID);
                                         startActivity(intent);
                                         finish();
 
-//                                        startActivity(new Intent(getApplicationContext(),supplierDashboard.class));
+//                                       startActivity(new Intent(getApplicationContext(),supplierDashboard.class));
                                         // finish();
                                     }
-                                } catch (NullPointerException e1) {
-                                    Log.d(TAG, "success");
+                                }
+                                catch (NullPointerException e1) {
+                                    Log.d(TAG, "success1");
                                     progressDialog.dismiss();
                                     Toast.makeText(loginActivity.this, "wrong check box", Toast.LENGTH_SHORT).show();
                                 }

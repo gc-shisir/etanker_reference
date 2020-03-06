@@ -41,7 +41,6 @@
                     android:id="@+id/name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Saurav"
                     android:textColor="@color/inputText"
                     android:textSize="25sp" />
 
@@ -50,16 +49,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="987654321"
                     android:textColor="@color/inputText"
                     android:textSize="25dp" />
-
-                <!--                <TextView-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="10dp"-->
-                <!--                    android:text="No of Tankers"-->
-                <!--                    android:textSize="25dp" />-->
 
             </LinearLayout>
 
