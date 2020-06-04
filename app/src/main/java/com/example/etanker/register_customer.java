@@ -11,17 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.etanker.Utils.Common;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +33,10 @@ public class register_customer extends AppCompatActivity {
     TextView swappToSupplier;
     FirebaseAuth FAuth;
     FirebaseFirestore firestoreDB;
+
+    FirebaseDatabase database;
+    DatabaseReference tableUser;
+
     String UserID;
     ProgressDialog progressDialog;
     Button customerRegister;
@@ -48,7 +52,12 @@ public class register_customer extends AppCompatActivity {
         customerPhone=findViewById(R.id.customer_Phone);
         swappToSupplier=findViewById(R.id.swap_Supplier);
         FAuth=FirebaseAuth.getInstance();
+
+        database=FirebaseDatabase.getInstance();
+        tableUser=database.getReference(Common.User);
+
         firestoreDB=FirebaseFirestore.getInstance();
+
         progressDialog=new ProgressDialog(this);
         customerRegister=findViewById(R.id.register_Customer);
         customerAddress=findViewById(R.id.customer_Address);
@@ -110,6 +119,7 @@ public class register_customer extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()) {
+
                     Map<String, Object> userInfo = new HashMap<>();
                     userInfo.put("name", name);
                     userInfo.put("email", email);

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/OrderTanker"
+            android:icon="@drawable/ic_add_black_24dp"
+            android:title="Order Tanker" />
+        <item
+            android:id="@+id/Order_Details"
+            android:icon="@drawable/ic_book_black_24dp"
+            android:title="OrderDetails" />
+        <item
+            android:id="@+id/LocationDetails"
+            android:icon="@drawable/ic_edit_location_black_24dp"
+            android:title="Update Location" />
+        <item
+            android:id="@+id/Feedback"
+            android:icon="@drawable/ic_feedback_black_24dp"
+            android:title="Feedback" />
+
+        <item
+            android:id="@+id/logoutUser"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:title="@string/sign_out" />
+    </group>
+</menu>

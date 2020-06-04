@@ -36,8 +36,7 @@ public class registerActivity extends AppCompatActivity {
     private EditText supplierEmail;
     private EditText supplierPassword;
     private EditText supplierPhone;
-    private EditText supplierTankerCount;
-    private Button supplierRegister;
+    private EditText supplierTankerCount,supplierLocationAddress;
     private  FirebaseAuth fAuth;
     FirebaseFirestore firestoreDB;
     String userID;
@@ -51,10 +50,11 @@ public class registerActivity extends AppCompatActivity {
 
         supplierEmail=(EditText)findViewById(R.id.supplier_email);
         supplierPassword=(EditText)findViewById(R.id.supplier_password);
-        supplierRegister=(Button)findViewById(R.id.supplier_register);
+        Button supplierRegister = (Button) findViewById(R.id.supplier_register);
         supplierName=(EditText)findViewById(R.id.supplier_name);
         supplierPhone=(EditText)findViewById(R.id.supplier_phone);
         supplierTankerCount=(EditText)findViewById(R.id.supplier_tanker_count);
+        supplierLocationAddress=(EditText)findViewById(R.id.supplierLocationAddress);
 
         progressDialog=new ProgressDialog(this);
 
@@ -71,15 +71,15 @@ public class registerActivity extends AppCompatActivity {
                 String regName=supplierName.getText().toString();
                 String regPhone=supplierPhone.getText().toString();
                 String regTankerCount=supplierTankerCount.getText().toString();
-
+                String regAddress=supplierLocationAddress.getText().toString();
 
                 if(TextUtils.isEmpty(regEmail)||TextUtils.isEmpty(regPass) || TextUtils.isEmpty(regName) || TextUtils.isEmpty(regPhone) ||
-                    TextUtils.isEmpty(regTankerCount)){
+                    TextUtils.isEmpty(regTankerCount)||TextUtils.isEmpty(regAddress)){
                     Toast.makeText(registerActivity.this, "Please enter the details", Toast.LENGTH_SHORT).show();
                 }else{
                     progressDialog.setMessage("Processing...");
                     progressDialog.show();
-                    registerUser(regEmail,regPass,regName,regPhone,regTankerCount);
+                    registerUser(regEmail,regPass,regName,regPhone,regTankerCount,regAddress);
                 }
             }
         });
@@ -87,7 +87,7 @@ public class registerActivity extends AppCompatActivity {
 
     }
 
-    private void registerUser(final String regEmail, String regPass, final String regName, final String regPhone, final String regTankerCount) {
+    private void registerUser(final String regEmail, String regPass, final String regName, final String regPhone, final String regTankerCount,final String regAddress) {
         fAuth.createUserWithEmailAndPassword(regEmail,regPass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -98,7 +98,7 @@ public class registerActivity extends AppCompatActivity {
                     userInfo.put("email",regEmail);
                     userInfo.put("phone_number",regPhone);
                     userInfo.put("tanker_count",regTankerCount);
-
+                    userInfo.put("location",regAddress);
                     userID=fAuth.getCurrentUser().getUid();
                     DocumentReference documentReference=firestoreDB.collection("suppliers").document(userID);
 

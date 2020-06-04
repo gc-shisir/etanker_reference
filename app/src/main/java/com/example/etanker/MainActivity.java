@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.google.firebase.firestore.CollectionReference;
+
 public class MainActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT=2000;
