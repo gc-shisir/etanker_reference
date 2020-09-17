@@ -16,6 +16,11 @@
             android:icon="@drawable/ic_edit_location_black_24dp"
             android:title="Update Location" />
         <item
+            android:id="@+id/SupplierLocation"
+            android:icon="@drawable/ic_baseline_location_searching_24"
+            android:title="Supplier Locations"
+            />
+        <item
             android:id="@+id/Feedback"
             android:icon="@drawable/ic_feedback_black_24dp"
             android:title="Feedback" />

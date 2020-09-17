@@ -13,6 +13,11 @@
             android:icon="@drawable/ic_book_black_24dp"
             android:title="Order Details" />
         <item
+            android:id="@+id/SupplierLocationUpdate"
+            android:title="Update Location"
+            android:icon="@drawable/ic_edit_location_black_24dp"
+            />
+        <item
             android:id="@+id/FeedbackSupplier"
             android:icon="@drawable/ic_feedback_black_24dp"
             android:title="Feedback" />

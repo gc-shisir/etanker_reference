@@ -24,9 +24,12 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QuerySnapshot;
 
-public class ListenOrder extends Service implements EventListener  {
+import java.util.Objects;
+
+public class ListenOrder extends Service implements EventListener {
     FirebaseFirestore fstore;
     FirebaseAuth firebaseAuth;
     DocumentReference doc;
@@ -48,8 +51,7 @@ public class ListenOrder extends Service implements EventListener  {
         super.onCreate();
         firebaseAuth= FirebaseAuth.getInstance();
         fstore=FirebaseFirestore.getInstance();
-        UserId=firebaseAuth.getCurrentUser().getUid();
-        //collectionReference=fstore.collection(Common.Suppliers).document(Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid()).collection("tankers").document().collection("Order Details");
+        UserId= Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
         collectionReference=fstore.collection(Common.Suppliers).document(UserId).collection("orderDetails");
         Log.d("My Activity",collectionReference.getPath());
     }
@@ -109,10 +111,11 @@ public class ListenOrder extends Service implements EventListener  {
                 .setContentText(" your tanker has been ordered for the service")
                 .setContentIntent(contentIntent)
                 .setContentInfo("Info")
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .setSmallIcon(R.mipmap.ic_launcher_foreground);
 
 
         NotificationManager notificationManager=(NotificationManager) getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        assert notificationManager != null;
         notificationManager.notify(1,builder.build());
 
 
@@ -123,23 +126,26 @@ public class ListenOrder extends Service implements EventListener  {
     public void onEvent(@Nullable Object o, @Nullable FirebaseFirestoreException e) {
         Log.d("My Activity",collectionReference.getPath());
         Log.d("My Activity","Notification point 1");
+
         collectionReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                Log.d("My Activity","Inside OnEvent");
                 if(e!=null){
-                    Log.d("My Activity",e.getMessage());
+                    Log.d("My Activity", Objects.requireNonNull(e.getMessage()));
                 }else {
                     assert queryDocumentSnapshots != null;
                     for (DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()) {
                         switch (doc.getType()){
                             case ADDED:
-                                showNotification();
+                                //showNotification();
                                 Log.d("My Activity","Document Added");
                                 break;
                             case REMOVED:
                                 Log.d("My Activity","Document Removed");
                                 break;
                             case MODIFIED:
+                                showNotification();
                                 break;
                         }
 
@@ -147,7 +153,7 @@ public class ListenOrder extends Service implements EventListener  {
                 }
 
             }
-        }).remove();
+        });//.remove();
 
     }
 }

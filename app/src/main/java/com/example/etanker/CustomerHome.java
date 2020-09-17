@@ -4,8 +4,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -36,7 +34,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -44,8 +41,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.SnapshotMetadata;
-import com.mancj.materialsearchbar.MaterialSearchBar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -287,7 +282,9 @@ public class CustomerHome extends AppCompatActivity implements NavigationView.On
         }else if(item.getItemId()==R.id.Feedback){
             Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
         }else if(item.getItemId()==R.id.LocationDetails){
-            startActivity(new Intent(CustomerHome.this,CustomerLocation.class));
+            startActivity(new Intent(CustomerHome.this, Location.class));
+        }else if(item.getItemId()==R.id.SupplierLocation){
+            startActivity(new Intent(CustomerHome.this,SupplierMapLocation.class));
         }
 
 

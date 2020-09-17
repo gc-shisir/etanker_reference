@@ -3,7 +3,6 @@ package com.example.etanker;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,20 +30,14 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.core.view.GravityCompat;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.net.Inet4Address;
 import java.util.Objects;
 
 public class SupplierHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -181,8 +174,6 @@ public class SupplierHome extends AppCompatActivity implements NavigationView.On
         }else if(item.getItemId()==R.id.OrderDetailsSupplier){
             Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
         }else if (item.getItemId()==R.id.FeedbackSupplier){
-
-
             Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show();
         }else if (item.getItemId()==R.id.logoutSupplier){
 
@@ -191,6 +182,9 @@ public class SupplierHome extends AppCompatActivity implements NavigationView.On
             Intent signIn=new Intent(SupplierHome.this,loginActivity.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(signIn);
+        }else if(item.getItemId()==R.id.SupplierLocationUpdate){
+            Intent updateLocation=new Intent(SupplierHome.this, Location.class);
+            startActivity(updateLocation);
         }
 
         DrawerLayout drawerLayout=findViewById(R.id.supplier_drawer_layout);

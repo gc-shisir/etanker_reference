@@ -5,11 +5,10 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
+         location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -32,12 +31,13 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".SupplierMapLocation"
+            android:label="@string/title_activity_supplier_map_location"></activity>
+        <activity
             android:name=".CustomerMapLocation"
-            android:label="@string/title_activity_customer_map_location">
-
-        </activity>
+            android:label="@string/title_activity_customer_map_location" />
         <activity android:name=".tankerDetailsSupplier" />
-        <activity android:name=".CustomerLocation" />
+        <activity android:name=".Location" />
 
         <service
             android:name=".Service.ListenOrder"

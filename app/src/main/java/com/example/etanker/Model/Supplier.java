@@ -6,16 +6,20 @@ public class Supplier {
     private String phone_number;
     private String tanker_count;
     private String location;
+    private String latitude;
+    private String longitude;
 
     public Supplier() {
     }
 
-    public Supplier(String name, String email, String phone_number, String tanker_count, String location) {
+    public Supplier(String name, String email, String phone_number, String tanker_count, String location, String latitude, String longitude) {
         this.name = name;
         this.email = email;
         this.phone_number = phone_number;
         this.tanker_count = tanker_count;
         this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getName() {
@@ -56,5 +60,13 @@ public class Supplier {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
     }
 }

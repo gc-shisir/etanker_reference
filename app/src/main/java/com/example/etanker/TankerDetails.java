@@ -1,6 +1,11 @@
 package com.example.etanker;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -15,17 +20,16 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
 
 import com.example.etanker.Model.User;
 import com.example.etanker.Utils.Common;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import com.google.firebase.auth.AdditionalUserInfo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -33,7 +37,6 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -166,6 +169,7 @@ public class TankerDetails extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
                                                         Toast.makeText(TankerDetails.this, "Order Placed Successfully", Toast.LENGTH_SHORT).show();
+                                                        showNotificationForCustomer();
                                                         startActivity(new Intent(TankerDetails.this, CustomerHome.class));
 
                                                     }
@@ -203,6 +207,37 @@ public class TankerDetails extends AppCompatActivity {
 
     }
 
+    private void showNotificationForCustomer(){
+        Intent intent=new Intent(getApplicationContext(),CustomerHome.class);
+        PendingIntent contentIntent=PendingIntent.getActivity(getBaseContext(),0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            NotificationChannel channel=
+                    new NotificationChannel("TankerOrder","Water Tankers", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationManager notificationManager=getSystemService(NotificationManager.class);
+            assert notificationManager != null;
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder=new NotificationCompat.Builder(getBaseContext(),"TankerOrder");
+
+        builder.setAutoCancel(false)
+                .setDefaults(Notification.DEFAULT_ALL)
+                .setWhen(System.currentTimeMillis())
+                .setTicker("Water Tankers")
+                .setContentTitle("Order Status")
+                .setContentText("Your order for the water tanker has been placed")
+                .setContentIntent(contentIntent)
+                .setContentInfo("Info")
+                .setSmallIcon(R.mipmap.ic_launcher_foreground);
+
+
+        NotificationManager notificationManager=(NotificationManager) getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        assert notificationManager != null;
+        notificationManager.notify(1,builder.build());
+
+    }
+
     private void getTankerDetail(final String supplierEmail, final String tankerNum) {
         fstore.collectionGroup("tankers").whereEqualTo("ownerEmail",supplierEmail)
                 .whereEqualTo("tankerNumber",tankerNum).addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -236,7 +271,6 @@ public class TankerDetails extends AppCompatActivity {
         });
 
     }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
